@@ -10,7 +10,7 @@ install:
 script:
   - cd ~/build/district10/texlive-pack;
   - make profile
-  - cat texlive.profile && chmod +x ./prepare.sh && ./prepare.sh packed-texlive-`date +%Y-%m-%d`.tar.xz
+  - cat texlive.profile && chmod +x ./prepare.sh && ./prepare.sh packed-texlive-`date +%Y-%m-%d-%M`.tar.xz
   - ls /tmp/texlive
   - mkdir publish && cp packed-texlive*.tar.xz publish
   - cat conf.json.in | sed -e "s/QiNiuAK/$QiNiuAK/" | sed -e "s/QiNiuSK/$QiNiuSK/" > conf.json

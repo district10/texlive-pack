@@ -8,6 +8,6 @@ tar xf install-tl-unx.tar.gz
 TARGET=/tmp/texlive
 rm -rf $TARGET
 
-perl install-tl-*/install-tl -profile profile
+perl install-tl-*/install-tl -profile texlive.profile
 
 tar -cJf $TARFILE_NAME -C $TARGET .
