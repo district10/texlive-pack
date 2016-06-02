@@ -1,0 +1,2 @@
+qiniu:
+	qrsync conf.json
