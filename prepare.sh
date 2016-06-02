@@ -11,6 +11,6 @@ rm -rf $TARGET
 PROFILE=texlive.profile
 sed "s#<TARGET>#$TARGET#g" ${PROFILE}.in > ${PROFILE}
 
-sh install-tl-*/install-tl -profile $PROFILE
+perl install-tl-*/install-tl -profile $PROFILE
 
 tar -cJf $TARFILE_NAME -C $TARGET .
