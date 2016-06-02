@@ -1,7 +1,7 @@
 language: c
 sudo: required
 before_install:
-  - export PATH="/tmp/bin:$HOME/bin:$HOME/texlive/bin/x86_64-linux:$PATH"
+    - export PATH="/tmp/bin:/tmp/texlive/bin/x86_64-linux:$HOME/bin:$HOME/texlive/bin/x86_64-linux:$PATH"
 install:
   - mkdir -p /tmp/bin && cd /tmp/bin
   - wget https://github.com/whudoc/statics/raw/master/qrsync.tar.gz
@@ -9,8 +9,11 @@ install:
   - chmod +x qrsync
 script:
   - cd ~/build/district10/texlive-pack;
-  - chmod +x ./prepare.sh && ./prepare.sh packed-texlive.tar.xz
-  - ls; ls publish
-  - mkdir publish && cp packed*.tar.xz publish
+  - make profile
+  - cat texlive.profile && chmod +x ./prepare.sh && ./prepare.sh packed-texlive-`date +%Y-%m-%d`.tar.xz
+  - ls /tmp/texlive
+  - mkdir publish && cp packed-texlive*.tar.xz publish
   - cat conf.json.in | sed -e "s/QiNiuAK/$QiNiuAK/" | sed -e "s/QiNiuSK/$QiNiuSK/" > conf.json
   - make qiniu
+  - xelatex --version
+  - tlmgr --version
